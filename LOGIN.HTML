@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Doce Sonhos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://via.placeholder.com/1920x1080/ffe4e1/000000?text=Imagem+de+Fundo'); /* Imagem de fundo */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden; /* Evita rolagem indesejada */
+        }
+
+        .registration-container {
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
+            border-radius: 10px;
+            padding: 40px;
+            width: 90%; /* Largura flexível */
+            max-width: 450px; /* Limita a largura para telas maiores */
+            text-align: center;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #d1739a;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #d1739a;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: #b15980;
+        }
+
+        .register-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #d1739a;
+            color: #fff;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .register-button:hover {
+            background-color: #b15980;
+        }
+
+        .login-options {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+        }
+
+        .login-options a {
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .google-btn {
+            background-color: #db4437;
+            color: #fff;
+        }
+
+        .facebook-btn {
+            background-color: #3b5998;
+            color: #fff;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .address-field {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #d1739a;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .address-field:focus {
+            border-color: #b15980;
+        }
+
+        .phone-field {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #d1739a;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .phone-field:focus {
+            border-color: #b15980;
+        }
+
+        /* Estilo responsivo para telas pequenas */
+        @media (max-width: 768px) {
+            .registration-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .input-field,
+            .register-button {
+                font-size: 0.9rem;
+            }
+
+            .login-options a {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h1>Cadastro - Doce Sonhos</h1>
+        <p>Cadastre-se para fazer parte da nossa doce família e receber novidades e ofertas exclusivas!</p>
+        
+        <!-- Formulário de Cadastro -->
+        <form id="registrationForm">
+            <input type="email" id="email" class="input-field" placeholder="E-mail" required>
+            <input type="password" id="password" class="input-field" placeholder="Senha" required>
+            <input type="text" id="address" class="address-field" placeholder="Endereço para entrega" required>
+            <input type="tel" id="phone" class="phone-field" placeholder="Telefone para contato" required>
+            <button type="submit" class="register-button">Cadastrar</button>
+        </form>
+
+        <!-- Opções de Cadastro com Google e Facebook -->
+        <div class="login-options">
+            <a href="#" class="google-btn">Cadastrar com Google</a>
+            <a href="#" class="facebook-btn">Cadastrar com Facebook</a>
+        </div>
+
+        <div class="contact-info">
+            <p><strong>Endereço:</strong> Rua dos Sonhos, 123 - Centro</p>
+            <p><strong>Número:</strong> (11) 98765-4321</p>
+            <p><strong>Descrição:</strong> A Doce Sonhos é a sua doceria preferida, com uma variedade incrível de doces, bolos e tortas artesanais feitas com muito carinho.</p>
+        </div>
+    </div>
+
+    <script>
+        // Função de validação de cadastro
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            // Obtém os valores dos campos
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const address = document.getElementById("address").value;
+            const phone = document.getElementById("phone").value;
+
+            // Verificação do e-mail e senha
+            if (email === "filhocesar241@gmail.com" && password === "1234567") {
+                alert("Cadastro realizado com sucesso!");
+                alert("E-mail: " + email);
+                alert("Endereço para entrega: " + address);
+                alert("Telefone: " + phone);
+
+                // Redireciona para a página index.html
+                window.location.href = "index.html"; // Redireciona para index.html após o cadastro
+            } else {
+                alert("E-mail ou senha incorretos. Tente novamente.");
+            }
+        });
+    </script>
+</body>
+</html>
