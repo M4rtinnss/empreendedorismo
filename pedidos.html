@@ -7,6 +7,11 @@
     <title>Doce Sonhos</title>
 
     <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
@@ -37,6 +42,7 @@
         .container {
             width: 90%;
             margin: 20px auto;
+            border: 1px #b15980;
         }
 
         .category {
@@ -114,6 +120,18 @@
             width: 100%;
             margin-top: 40px;
         }
+
+        #descriptionField {
+            width: 100%;
+            padding: 10px;
+            border: 2.5px solid #d1739a;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 1em;
+            height: 100px;
+            box-sizing: border-box;
+            color: #d1739a; /* Definindo a cor do texto como rosa */
+        }
     </style>
 </head>
 
@@ -139,6 +157,9 @@
             <h3>Carrinho de Compras</h3>
             <div id="cartItems"></div>
             <div class="cart-total" id="cartTotal">Total: R$0,00</div>
+            <!-- Campo para descrição do pedido -->
+            <textarea id="descriptionField" placeholder="Adicione uma descrição para o seu pedido..."></textarea>
+            <br>
             <button onclick="finalizeOrder()">Finalizar Pedido</button>
         </div>
 
@@ -201,7 +222,6 @@
             </div>
         </div>
 
-        <!-- Continue com o restante das categorias e produtos conforme solicitado... -->
     </div>
 
     <footer>
@@ -232,16 +252,18 @@
         }
 
         function finalizeOrder() {
+            const description = document.getElementById('descriptionField').value;
             if (cart.length === 0) {
                 alert('Seu carrinho está vazio!');
                 return;
             }
-            const confirmation = confirm(`Total: R$${total.toFixed(2)}. Deseja confirmar o pedido?`);
+            const confirmation = confirm(`Total: R$${total.toFixed(2)}. Deseja confirmar o pedido? ${description ? '\n\nDescrição: ' + description : ''}`);
             if (confirmation) {
                 alert('Pedido confirmado! Agradecemos sua compra.');
                 cart = [];
                 total = 0;
                 updateCart();
+                document.getElementById('descriptionField').value = ''; // Limpa o campo de descrição
             }
         }
     </script>
